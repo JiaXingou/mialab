@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 =================================================
-PSAIA Documentation
+PGT Documentation
 =================================================
 
 This is a program to predict inter-chain contact map for homologous protein complex , named PGT (P is Protein, G is Graph attention network and T is Triangular multiplication update).
