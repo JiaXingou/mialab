@@ -1,62 +1,58 @@
 # Easy Installation
 
-This guide helps you install PSAIA with basic features.  We recommend building PSAIA with [Docker](#container-deployment) to avoid dependency issues. We recommend compiling PSAIA(and possibly its requirements) from the source code using the latest compiler for the best performace. You can also deploy ABACUS **without building** by [Docker](#container-deployment) . Please note that PSAIA only supports Linux; for Windows users, please consider using [WSL](https://learn.microsoft.com/en-us/windows/wsl/) or docker.
+This guide helps you install PGT with basic features.  We recommend building PGT with [Docker](#container-deployment) to avoid dependency issues. We recommend compiling PGT(and possibly its requirements) from the source code using the latest compiler for the best performace. You can also deploy PGT **without building** by [Docker](#container-deployment) . Please note that PGT only supports Linux; for Windows users, please consider using [WSL](https://learn.microsoft.com/en-us/windows/wsl/) or docker.
 
 ## Prerequisites
 
-To compile PSAIA, please make sure that the following prerequisites are present:
+To build PGT, please make sure that the following dependencies are present:
 
-This program needs Naccess, you can download it if from http://www.bioinf.manchester.ac.uk/naccess/ and then put the directory named naccess2.1.1 in Program/.
+biopython==1.81
+certifi==2023.7.22
+cffi 
+charset-normalizer==3.3.1
+dgl==0.6.1
+docopt==0.6.2
+future 
+h5py==3.8.0
+idna==3.4
+networkx==2.6.3
+numpy 
+psutil==5.9.6
+pycparser 
+requests==2.31.0
+scipy==1.7.3
+torch==1.10
+tqdm==4.66.1
+typing_extensions 
+urllib3==2.0.7
+yarg==0.1.9
 
-To use Qcontacts in Program/, you need to install the corresponding dependencies : 
+Some of these packages can be installed with popular package management system, such as pip:
 
 ```
-sudo apt-get install lib32z1
+pip install -r requirements.txt
 ```
 
-or 
-
-```
-sudo apt-get install lib32ncurses5
-```
-
-After this, run the following order:
-
-```
-cd Program/Qcontacts
-ldd Qcontacts
-```
-
-If you can see its dependencies, you can go on . If not, you need to check if the versions of the relevant libraries are correct.
-
+If you can install the above dependencies, you can go on . If not, you need to check if the versions of the relevant libraries are correct.
 ## Install requirements
 
-Some of these packages can be installed with popular package management system, such as `apt` and `yum`:
+Some of these packages can be installed with popular package management system, such as pip:
 
-```bash
-sudo apt update && sudo apt install -y libopenblas-openmp-dev liblapack-dev libscalapack-mpi-dev libelpa-dev libfftw3-dev libcereal-dev libxc-dev g++ make cmake bc git
 ```
-
-> Installing ELPA by apt only matches requirements on Ubuntu 22.04. For earlier linux distributions, you should build ELPA from source.
-
-We recommend [Intel® oneAPI toolkit](https://software.intel.com/content/www/us/en/develop/tools/oneapi/commercial-base-hpc.html) (former Intel® Parallel Studio) as toolchain. The [Intel® oneAPI Base Toolkit](https://software.intel.com/content/www/us/en/develop/tools/oneapi/all-toolkits.html#base-kit) contains Intel® oneAPI Math Kernel Library (aka `MKL`), including `BLAS`, `LAPACK`, `ScaLAPACK` and `FFTW3`. The [Intel® oneAPI HPC Toolkit](https://software.intel.com/content/www/us/en/develop/tools/oneapi/all-toolkits.html#hpc-kit) contains Intel® MPI Library, and C++ compiler(including MPI compiler).
-> Please note that building `elpa` with a different MPI library may cause conflict.
-> Don't forget to [set environment variables](https://software.intel.com/content/www/us/en/develop/documentation/get-started-with-intel-oneapi-render-linux/top/configure-your-system.html) before you start! `cmake` will use Intel MKL if the environment variable `MKLROOT` is set.
-
-Please refer to our [guide](https://github.com/deepmodeling/abacus-develop/wiki/Building-and-Running-ABACUS) on installing requirements.
-
+pip install -r requirements.txt
+```
 
 ## Get PSAIA source code
 
-Of course a copy of PSAIA source code is required, which can be obtained via one of the following choices:
+Of course a copy of PGT source code is required, which can be obtained via one of the following choices:
 
-- Clone the whole repo with git: `git clone https://github.com/Stephen523/MIALAB.git
-- Clone the minimum required part of repo: `git clone https://github.com/Stephen523/MIALAB.git --depth=1`
-- Get the source code of a stable version from [here](https://github.com/Stephen523/MIALAB)
+- Clone the whole repo with git: `git clone https://github.com/JiaXingou/MIALAB.git
+- Clone the minimum required part of repo: `git clone https://github.com/JiaXingou/MIALAB.git `
+- Get the source code of a stable version from [here](https://github.com/JiaXingou/MIALAB)
 
 ### Update to latest release
 
-Please check the [release page](https://github.com/deepmodeling/abacus-develop/releases) for the release note of a new version.
+Please check the [release page](https://github.com/JiaXingou/MIALAB) for the release note of a new version.
 
 It is OK to download the new source code from beginning following the previous step.
 
@@ -142,35 +138,20 @@ You can change the number after `-j` on your need: set to the number of CPU core
 
 ## Run
 
-If ABACUS is installed into a custom directory using `CMAKE_INSTALL_PREFIX`, please add it to your environment variable `PATH` to locate the correct executable.
+Put pdb files of proteins in the folder named /example/.
 
-```bash
-export PATH=/my-install-dir/:$PATH
+Then run the following order to run:
+
+```
+cd ..
+python predict.py T0805 ./example/.
 ```
 
-Please set OpenMP threads by setting environment variable:
+You can change the number of top patches in  sort_patch.sh
 
-```bash
-export OMP_NUM_THREADS=1
-```
+Then, you will get the inter-chain contact map and the top 20 residue contact pair prediction in the folder: /example/
 
-Enter a directory containing a `INPUT` file. Please make sure structure, pseudo potential, or orbital files indicated by `INPUT` is at the correct location.
-
-```bash
-cd abacus-develop/examples/force/pw_Si2
-```
-
-Use 4 MPI processes to run, for example:
-
-```bash
-mpirun -n 4 abacus
-```
-
-> The total thread count(i.e. OpenMP per-process thread count * MPI process count) should not exceed the number of cores in your machine.
-
-Please refer to [hands-on guide](./hands_on.md) for more instructions.
-
-> Note: Some Intel CPU has a feature named Hyper-Threading(HT). This feature enables one physical core switch fastly between two logical threads. It would benefits from I/O bound tasks: when a thread is blocked by I/O, the CPU core can work on another thread. However, it helps little on CPU bound tasks, like ABACUS and many other scientific computing softwares. We recommend using the physical CPU core number.
+> Note: Some Intel CPU has a feature named Hyper-Threading(HT). This feature enables one physical core switch fastly between two logical threads. It would benefits from I/O bound tasks: when a thread is blocked by I/O, the CPU core can work on another thread. However, it helps little on CPU bound tasks, like PGT and many other scientific computing softwares. We recommend using the physical CPU core number.
 > To determine if HT is turned on, execute `lscpu | grep 'per core'` and see if 'Thread(s) per core' is 2.
 
 ## Container Deployment
