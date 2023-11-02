@@ -81,60 +81,7 @@ git pull
 
 ## Configure
 
-The basic command synopsis is:
-
-```bash
-cd abacus-develop
-cmake -B build [-D <var>=<value>] ...
-```
-
-Here, 'build' is the path for building ABACUS; and '-D' is used for setting up some variables for CMake indicating optional components or requirement positions.
-
-- `CMAKE_INSTALL_PREFIX`: the path of ABACUS binary to install; `/usr/local/bin/abacus` by default
-- Compilers
-  - `CMAKE_CXX_COMPILER`: C++ compiler; usually `g++`(GNU C++ compiler) or `icpx`(Intel C++ compiler). Can also set from environment variable `CXX`. It is OK to use MPI compiler here.
-  - `MPI_CXX_COMPILER`: MPI wrapper for C++ compiler; usually `mpicxx` or `mpiicpc`(for Intel MPI).
-- Requirements: Unless indicated, CMake will try to find under default paths.
-  - `MKLROOT`: If environment variable `MKLROOT` exists, `cmake` will take MKL as a preference, i.e. not using `LAPACK`, `ScaLAPACK` and `FFTW`. To disable MKL, unset environment variable `MKLROOT`, or pass `-DMKLROOT=OFF` to `cmake`.
-  - `LAPACK_DIR`: Path to OpenBLAS library `libopenblas.so`(including BLAS and LAPACK)
-  - `SCALAPACK_DIR`: Path to ScaLAPACK library `libscalapack.so`
-  - `ELPA_DIR`: Path to ELPA install directory; should be the folder containing 'include' and 'lib'.
-  > Note: If you install ELPA from source, please add a symlink to avoid the additional include file folder with version name: `ln -s elpa/include/elpa-2021.05.002/elpa elpa/include/elpa`. This is a known behavior of ELPA.
-
-  - `FFTW3_DIR`: Path to FFTW3.
-  - `CEREAL_INCLUDE_DIR`: Path to the parent folder of `cereal/cereal.hpp`. Will download from GitHub if absent.
-  - `Libxc_DIR`: (Optional) Path to Libxc.
-  > Note: Building Libxc from source with Makefile does NOT support using it in CMake here. Please compile Libxc with CMake instead.
-  - `LIBRI_DIR`: (Optional) Path to LibRI.
-  - `LIBCOMM_DIR`: (Optional) Path to LibComm.
-
-- Components: The values of these variables should be 'ON', '1' or 'OFF', '0'. The default values are given below.
-  - `ENABLE_LCAO=ON`: Enable LCAO calculation. If SCALAPACK, ELPA or CEREAL is absent and only require plane-wave calculations, the feature of calculating LCAO basis can be turned off.
-  - `ENABLE_LIBXC=OFF`: [Enable Libxc](../advanced/install.md#add-libxc-support) to suppport variety of functionals. If `Libxc_DIR` is defined, `ENABLE_LIBXC` will set to 'ON'.
-  - `ENABLE_LIBRI=OFF`: [Enable LibRI](../advanced/install.md#add-libri-support) to suppport variety of functionals. If `LIBRI_DIR` and `LIBCOMM_DIR` is defined, `ENABLE_LIBRI` will set to 'ON'.
-  - `USE_OPENMP=ON`: Enable OpenMP support. Building ABACUS without OpenMP is not fully tested yet.
-  - `BUILD_TESTING=OFF`: [Build unit tests](../advanced/install.md#build-unit-tests).
-  - `ENABLE_MPI=ON`: Enable MPI parallel compilation. If set to `OFF`, a serial version of ABACUS with PW basis only will be compiled. Currently serial version of ABACUS with LCAO basis is not supported yet, so `ENABLE_LCAO` will be automatically set to `OFF`.
-  - `ENABLE_COVERAGE=OFF`: Build ABACUS executable supporting [coverage analysis](../CONTRIBUTING.md#generating-code-coverage-report). This feature has a drastic impact on performance.
-  - `ENABLE_ASAN=OFF`: Build with Address Sanitizer. This feature would help detecting memory problems. Only supports GCC.
-  - `USE_ELPA=ON`: Use ELPA library in LCAO calculations. If this value is set to OFF, ABACUS can be compiled without ELPA library.
-
-Here is an example:
-
-```bash
-CXX=mpiicpc cmake -B build -DCMAKE_INSTALL_PREFIX=~/abacus -DELPA_DIR=~/elpa-2016.05.004/build -DCEREAL_INCLUDE_DIR=~/cereal/include
-```
-
 ## Build and Install
-
-After configuring, build and install by:
-
-```bash
-cmake --build build -j`nproc`
-cmake --install build
-```
-
-You can change the number after `-j` on your need: set to the number of CPU cores(`nproc`) to reduce compilation time.
 
 ## Run
 
@@ -143,7 +90,7 @@ Put pdb files of proteins in the folder named /example/.
 Then run the following order to run:
 
 ```
-cd ..
+cd contact
 python predict.py T0805 ./example/.
 ```
 
