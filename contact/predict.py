@@ -287,7 +287,7 @@ def main(pdb_name,pdb_path):
 
         TopPrediction(pred=outputs, top=20, outfile='./example/'+ pdb_name + '_TopPrediction.txt')      
         os.remove('./example/'+ pdb_name +'_attention.pkl')
-        os.remove('./example/'+ pdb_name +'contact.h5')
+        os.remove('./example/'+ pdb_name +'_contact.h5')
         os.remove('./example/'+ pdb_name +'_repre.h5')
         print("output TopPrediction")
        
