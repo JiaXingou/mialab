@@ -112,9 +112,9 @@ def one_hot(seq):
     return feat
 
 #测试
-pdb_name = 'T0805'
-pdb_path = './example/T0805_A.pdb'
+#pdb_name = 'T0805'
+#pdb_path = './example/T0805_A.pdb'
 # pdb_path = './example/8e4r_A.pdb'
 # pdb_name='8e4r'
-repre,attention,one_hot_2d,contact= feature(pdb_path,pdb_name)     #299,1280;  1,299,299,660; 299,299,40; 299,299
+#repre,attention,one_hot_2d,contact= feature(pdb_path,pdb_name)     #299,1280;  1,299,299,660; 299,299,40; 299,299
 # 1
