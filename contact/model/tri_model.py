@@ -3,8 +3,8 @@ from typing import Optional
 import torch
 import torch.nn as nn
 from torch.nn import Linear
-from tri_model_supp import LayerNorm,permute_final_dims
-from dropout import DropoutRowwise
+from model.tri_model_supp import LayerNorm,permute_final_dims
+from model.dropout import DropoutRowwise
 
 class TriangleMultiplicativeUpdate(nn.Module):
     """

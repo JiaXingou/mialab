@@ -7,9 +7,9 @@ from torch.utils.data import DataLoader
 import pickle
 import numpy as np
 import os
-from resnet import ResNet,block
-import GAT_module as GAT
-from tri_model import tri_model
+from model.resnet import ResNet,block
+import model.GAT_module as GAT
+from model.tri_model import tri_model
 from feature import feature
 
 
