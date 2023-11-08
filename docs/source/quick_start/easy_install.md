@@ -91,12 +91,12 @@ Then run the following order to run:
 
 ```
 cd contact
-python predict.py T0805 ./example/.
+python predict.py . ./example/.
 ```
 
-You can change the number of top patches in  sort_patch.sh
-
 Then, you will get the inter-chain contact map and the top 20 residue contact pair prediction in the folder: /example/
+
+
 
 > Note: Some Intel CPU has a feature named Hyper-Threading(HT). This feature enables one physical core switch fastly between two logical threads. It would benefits from I/O bound tasks: when a thread is blocked by I/O, the CPU core can work on another thread. However, it helps little on CPU bound tasks, like PGT and many other scientific computing softwares. We recommend using the physical CPU core number.
 > To determine if HT is turned on, execute `lscpu | grep 'per core'` and see if 'Thread(s) per core' is 2.
