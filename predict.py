@@ -10,7 +10,7 @@ import os
 from model.resnet import ResNet,block
 import model.GAT_module as GAT
 from model.tri_model import tri_model
-from feature import feature
+from util.feature import feature
 
 
 cuda=torch.cuda.is_available()
