@@ -129,7 +129,7 @@ class Dataset(Dataset.Dataset):
         # G=GAT.default_loader(monomer_contact,seq_len)     #根据contact建图
 
         #feature_dict
-        feature_dict['repre'] = repre.unsqueeze(0)
+        feature_dict['repre'] = repre
         feature_dict['attention'] = attention.unsqueeze(0)
         feature_dict['one_hot_2d'] = one_hot_2d.unsqueeze(0)
         feature_dict['monomer_contact'] = monomer_contact
