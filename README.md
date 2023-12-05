@@ -9,12 +9,12 @@ This program needs pdb-format files of homologous protein complex proteins, you 
 # Prerequisites
 
 To build PGT, please make sure that the following dependencies are present:
-
+```
 biopython==1.81
 certifi==2023.7.22
 cffi 
 charset-normalizer==3.3.1
-dgl==0.6.1
+dgl
 docopt==0.6.2
 future 
 h5py==3.8.0
@@ -25,12 +25,13 @@ psutil==5.9.6
 pycparser 
 requests==2.31.0
 scipy==1.7.3
-torch==1.10
+torch
 tqdm==4.66.1
 typing_extensions 
 urllib3==2.0.7
 yarg==0.1.9
 
+```
 Some of these packages can be installed with popular package management system, such as pip:
 
 ```
