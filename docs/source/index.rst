@@ -19,20 +19,6 @@ This is a program to predict inter-chain contact map for homologous protein comp
 
 .. toctree::
    :maxdepth: 2
-   :caption: Advanced
-
-   advanced/install
-   advanced/scf/index
-   advanced/pp_orb
-   advanced/opt
-   advanced/md
-   advanced/acceleration/index
-   advanced/elec_properties/index
-   advanced/interface/index
-   advanced/input_files/index
-
-.. toctree::
-   :maxdepth: 2
    :caption: Citing ABACUS
 
    CITATIONS
