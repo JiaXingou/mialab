@@ -6,11 +6,12 @@ This guide helps you install PGT with basic features.  We recommend building PGT
 
 To build PGT, please make sure that the following dependencies are present:
 
+```
 biopython==1.81
 certifi==2023.7.22
 cffi 
 charset-normalizer==3.3.1
-dgl==0.6.1
+dgl
 docopt==0.6.2
 future 
 h5py==3.8.0
@@ -21,12 +22,13 @@ psutil==5.9.6
 pycparser 
 requests==2.31.0
 scipy==1.7.3
-torch==1.10
+torch
 tqdm==4.66.1
 typing_extensions 
 urllib3==2.0.7
 yarg==0.1.9
 
+```
 Some of these packages can be installed with popular package management system, such as pip:
 
 ```
@@ -94,12 +96,8 @@ cd contact
 python predict.py . ./example/.
 ```
 
-Then, you will get the inter-chain contact map and the top 20 residue contact pair prediction in the folder: /example/
+Then, you will get the inter-chain contact map and the top 20 residue contact pair prediction in the folder: ./example/
 
-
-
-> Note: Some Intel CPU has a feature named Hyper-Threading(HT). This feature enables one physical core switch fastly between two logical threads. It would benefits from I/O bound tasks: when a thread is blocked by I/O, the CPU core can work on another thread. However, it helps little on CPU bound tasks, like PGT and many other scientific computing softwares. We recommend using the physical CPU core number.
-> To determine if HT is turned on, execute `lscpu | grep 'per core'` and see if 'Thread(s) per core' is 2.
 
 ## Container Deployment
 
@@ -114,24 +112,3 @@ The project is ready for VS Code development container. Please refer to [Develop
 For online development environment, we support [GitHub Codespaces](https://github.com/codespaces): [Create a new Codespace](https://github.com/codespaces/new?machine=basicLinux32gb&repo=334825694&ref=develop&devcontainer_path=.devcontainer%2Fdevcontainer.json&location=SouthEastAsia)
 
 We also support [Gitpod](https://www.gitpod.io/): [Open in Gitpod](https://gitpod.io/#https://github.com/deepmodeling/abacus-develop)
-
-## Install by conda
-
-Conda is a package management system with a separated environment, not requiring system privileges. A pre-built ABACUS binary with all requirements is available at [conda-forge](https://anaconda.org/conda-forge/abacus). Conda will install the GPU-accelerated version of ABACUS if a valid GPU driver is present.
-
-```bash
-# Install
-# We recommend installing ABACUS in a new environment to avoid potential conflicts:
-conda create -n abacus_env abacus -c conda-forge
-
-# Run
-conda activate abacus_env
-OMP_NUM_THREADS=1 mpirun -n 4 abacus
-
-# Update
-conda update -n abacus_env abacus -c conda-forge
-```
-
-For more details on building a conda package of ABACUS, please refer to the [conda recipe file](https://github.com/deepmodeling/abacus-develop/blob/develop/conda/meta.yaml).
-
-> Note: The [deepmodeling conda channel](https://anaconda.org/deepmodeling/abacus) offers historical versions of ABACUS.
