@@ -48,12 +48,12 @@ Then run the following order to run:
 
 ```
 cd ..
-python predict.py T0805 ./example/.
+python predict.py . ./example/.
 ```
 
 You can change the number of top patches in  sort_patch.sh
 
-Then, you will get the inter-chain contact map and the top 20 residue contact pair prediction in the folder: /example/
+Then, you will get the inter-chain contact map and the top 20 residue contact pair prediction in the folder: ./example/
 
 # Contact
 
