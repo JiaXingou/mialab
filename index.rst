@@ -14,8 +14,8 @@ This is a program to predict inter-chain contact map for homologous protein comp
    :caption: Quick Start:
 
    quick_start/easy_install
+   quick_start/How_to_Read_the_results
    quick_start/hands_on
-   quick_start/input
 
 .. toctree::
    :maxdepth: 2
