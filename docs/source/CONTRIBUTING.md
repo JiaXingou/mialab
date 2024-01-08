@@ -47,7 +47,7 @@ To help us reproduce and confirm a bug, please provide a test case and building 
 
 ## Submitting a Pull Request
 
-1. [Fork](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo) the [PSAIA repository](https://github.com/RUC-MIALAB/PGT). If you already had an existing fork, [sync](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) the fork to keep your modification up-to-date.
+1. [Fork](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo) the [PGT repository](https://github.com/RUC-MIALAB/PGT). If you already had an existing fork, [sync](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) the fork to keep your modification up-to-date.
 
 2. Pull your forked repository, create a new git branch, and make your changes in it:
 
