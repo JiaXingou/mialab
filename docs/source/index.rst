@@ -1,4 +1,4 @@
-.. PSAIA documentation master file, created by
+.. PGT documentation master file, created by
    sphinx-quickstart on Fri Mar 11 10:42:27 2023.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
