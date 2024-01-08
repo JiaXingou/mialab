@@ -33,7 +33,7 @@ This is a program to predict inter-chain contact map for homologous protein comp
 
 .. toctree::
    :maxdepth: 2
-   :caption: Citing ABACUS
+   :caption: Citing PGT
 
    CITATIONS
 
