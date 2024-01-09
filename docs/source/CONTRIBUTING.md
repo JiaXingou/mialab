@@ -21,7 +21,7 @@ If you would like to implement a new feature, please submit an issue with a prop
 ## Structure of the package
 
 Please refer to [our instructions](./quick_start/easy_install.md) on how to installing PGT.
-The source code of PSAIA is based on several modules. Under the PGT root directory, there are the following folders:
+The source code of PGT is based on several modules. Under the PGT root directory, there are the following folders:
 
 - `docs`: documents and supplementary info about PGT;
 - `example`: some examples showing the usage of PGT;
